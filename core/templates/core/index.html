@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MiniLang Evaluador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    main.card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h1 { text-align: center; color: #333; }
+    label { display: block; margin-top: 10px; }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background: #4caf50;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .result-label {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+    .result-box {
+      background: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+    .secondary { background: #e8f5e9; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>MiniLang Evaluador</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label>x:</label>
+      <input type="number" name="x" value="{{ x }}">
+
+      <label>y:</label>
+      <input type="number" name="y" value="{{ y }}">
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <div class="result-label">Resultado de x * y + 10:</div>
+    <div class="result-box">{{ resultado_expr }}</div>
+
+    <div class="result-label">Resultado de x + 1:</div>
+    <div class="result-box secondary">{{ resultado_suma }}</div>
+  </main>
+</body>
+</html>
